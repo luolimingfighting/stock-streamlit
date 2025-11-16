@@ -1,0 +1,15 @@
+| 数据大类      | 子类/典型内容                    | 主要获取函数                                                             | 更新频率                | 常用字段示例                                | 备注                 |
+| --------- | -------------------------- | ------------------------------------------------------------------ | ------------------- | ------------------------------------- | ------------------ |
+| 1. 行情数据   | 日线、分钟、tick、分时、复权           | get\_price / get\_bars / attribute\_history                        | 日级当天 19:30 前；分钟实时推送 | open/high/low/close/volume/money/avg  | 支持前/后复权、停牌补齐       |
+| 2. 财务数据   | 三大报表+衍生指标                  | get\_fundamentals / query                                          | 季度披露后 1-2 日内        | roe、net\_profit、operating\_revenue    | 与财报披露同步            |
+| 3. 估值指标   | 市盈率、PEG、EV/EBITDA…         | get\_fundamentals(query(valuation))                                | 日频                  | pe\_ratio、pb\_ratio、ps\_ratio         | 自动复用最新一期财报         |
+| 4. 指数/板块  | 指数成分、行业、概念、地域              | get\_index\_stocks / get\_industry\_stocks / get\_concept\_stocks  | 日终                  | —                                     | 申万、证监会、聚宽三级行业      |
+| 5. 因子库    | 质量、情绪、成长、风险等 6 大类 300+ 因子  | get\_factor\_values                                                | 日终                  | ROE\_cut、NetProfitGrowRate、alpha\_001 | Alpha101/191 已内置   |
+| 6. 基金数据   | ETF、LOF、分级、货币基金净值          | get\_price / get ETFs 清单                                           | ETF 实时；净值当晚         | unit\_nav、discount\_rate              | 支持场内基金套利           |
+| 7. 期货/期权  | 商品、金融期货、50ETF/300ETF 期权    | get\_price / get\_ticks                                            | 分钟/日                | settle、open\_interest、iv              | 主力合约自动换月           |
+| 8. 债券/可转债 | 国债、企业债、可转债行情与转股价           | get\_price / get\_call\_table                                      | 日频                  | ytm、conversion\_premium\_rate         | 转债强赎、下修条款可查        |
+| 9. 宏观数据   | 央行利率、CPI、PMI、社融、汇率         | get\_macro                                                         | 月/季                 | cpi\_yoy、shibor\_3m                   | 与国家统计局同步           |
+| 10. 特色/舆情 | 分析师一致预期、龙虎榜、融资融券、CCTV 新闻情绪 | get\_consensus / get\_billboard / get\_mtss / get\_news\_sentiment | 日终                  | con\_eps、buy\_amount、sentiment\_score | 舆情 2025 版已支持 8 大媒体 |
+
+特征：
+1. 行情数据：开盘价、收盘价、最高价、最低价、成交量、换手率、成交额、均价
